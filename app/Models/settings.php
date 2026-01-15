@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 
 class settings extends Model
 {
-    use HasUuids;
+    // Tentukan primary key sebagai 'key'
+    protected $primaryKey = 'key';
+
+    // Matikan incrementing karena key berupa string
+    public $incrementing = false;
+
+    // Tipe key adalah string
+    protected $keyType = 'string';
+
+    protected $fillable = ['key', 'value'];
 }

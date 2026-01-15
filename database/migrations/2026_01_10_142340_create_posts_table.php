@@ -18,7 +18,9 @@ return new class extends Migration
                 $table->string('title');
                 $table->text('content');
                 $table->string('image_path')->nullable();
-                $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
+                $table->foreignUuid('author_id')
+                    ->constrained('users', 'id')
+                    ->cascadeOnDelete();
                 $table->enum('status', ['draft', 'published'])->default('draft');
                 $table->timestamps();
             });
